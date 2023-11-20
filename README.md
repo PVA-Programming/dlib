@@ -21,7 +21,7 @@ The #ALL function takes:
 2. A Predicate function (a function that evaluate an input and return 1 or 0, *true* or *false*)
 
 Like this: 
-```
+```asm
 JS#ALL("array",#Predicate)
 ```
 It will loop over all the elements of the array and pass them to your predicate function. 
