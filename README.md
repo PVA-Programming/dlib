@@ -73,7 +73,7 @@ Now ALL_LOW will tell us if all the tanks are low psi or not.
 
 - ### ALL
   ```
-  #ALL("array", #PREDIATE)
+  #ALL("array", #PREDICATE)
   ```
   Checks if #PREDICATE returns true for all elements in the array
 
