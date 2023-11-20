@@ -12,9 +12,13 @@ Using them could be convenient and can make DMC code a little more expressive an
 ## How do I use these?
 
 Here's an example:
+
+Let's say you wanted to test if all of your tanks were below 1 PSI.
+We can use the #ALL function.
+
 The #ALL function takes:
-1. an array
-2. a Predicate function (a function that evaluate an input and return 1 or 0, *true* or *false*)
+1. An array
+2. A Predicate function (a function that evaluate an input and return 1 or 0, *true* or *false*)
 
 Like this: 
 ```
@@ -22,10 +26,6 @@ JS#ALL("array",#Predicate)
 ```
 It will loop over all the elements of the array and pass them to your predicate function. 
 If any of these calls to the predicate return 0 (false), #ALL will return 0. If all of the calls to the predicate return 1 (true), #ALL will return 1 (true).
-
-Here's an example of how to use #ALL in real code:
-
-We want to know if all the of the tanks are at a low PSI.
 
 1. First we create an array of tanks to iterate over:
 ```
