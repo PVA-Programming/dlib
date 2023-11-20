@@ -1,0 +1,55 @@
+REM Wait until a predicate evaluates to true
+REM 
+REM ^a - A predicate function. #WAITFOR will wait until
+REM      it evaluates to true.
+REM      This predicate must return 1 or 0 - true or false
+#WAITFOR
+   JS ^a
+   JP#WAITFOR,(_JS=0)
+EN
+
+
+REM Returns true if all items in array satisfy the predicate
+REM
+REM ^a - An array where each item will be tested
+REM 
+REM ^b - A predicate function.
+REM      Each element of the array will be passed to this predicate
+REM      Like this: JS#PRDCTE(element)
+REM      This predicate must return 1 or 0 - true or false
+#ALL
+   JS#ALLLP(^a,^b,0)
+EN,,_JS
+#ALLLP
+   JS ^b(^a[^c])
+   IF(_JS=0);EN,,0;ENDIF
+   ^c=^c+1
+   JP#ALLLP,(^c<^a[-1])
+EN,,1
+
+
+REM Calls a subroutine for each element in an array
+REM
+REM ^a - The name of the array to iterate over
+REM
+REM ^b - A label for a subroutine to call for each item
+REM      This label will be passed the current element
+REM      the foreach is processing and the current index
+REM      of the array. Like this JS#CALLBK(element, index)
+REM
+REM Preconditions:
+REM    - The name of the array passed in must be less than 6 characters
+REM    - The label passed in must be a subroutine the ends with an EN command
+REM
+REM Example:
+REM    JS#4EACH("MSGS", #PRINT)
+REM
+#FOREACH
+   JS#4EACHLP(^a,^b,0)
+EN
+#4EACHLP
+   ;REM ^c is the index of the array we are on
+   JS ^b(^a[^c],^c)
+   ^c=^c+1
+   JP#4EACHLP,(^c<^a[-1])
+EN
