@@ -64,6 +64,7 @@ ALL_LOW = _JS
 Now ALL_LOW will tell us if all the tanks are low psi or not.
 
 You could easily add more tanks to your check by adding another element to TANKS[], or you could change your PSI threshold by changing the #LOWPSI predicate.
+You could check something else about the tanks by creating a new predicate function, etc.
 
 The code is also (in my opinion) much clearer.
 
