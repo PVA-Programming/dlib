@@ -28,17 +28,14 @@ It will loop over all the elements of the array and pass them to your predicate 
 If any of these calls to the predicate return 0 (false), #ALL will return 0. If all of the calls to the predicate return 1 (true), #ALL will return 1.
 
 1. First we create an array of tanks to iterate over:
-```
+```asm
    DM TANKS[3]   
    TANKS[0]=aGAUGE1
    TANKS[1]=aGAUGE2
    TANKS[2]=aGAUGE3
 ```
 2. Then we create a predicate function to test whether each tank is at a low PSI:
-```
-REM Returns if the psi of analog is lower than 1
-REM 
-REM ^a - The analog number
+```asm
 #LOWPSI
 EN,,(AN_ACT[^a]<1)
 ```
@@ -48,7 +45,7 @@ To access the first argument passed to a function in DMC, you use ^a. If there w
 
 To return a value from a function in DMC, you have to specify the value as part of the EN command after two ','s like this:
 
-```
+```asm
 EN,,(AN_ACT[^a]<1)
 ```
 The returned value can then be accessed through _JS.
@@ -56,7 +53,7 @@ The returned value can then be accessed through _JS.
 The syntax is awful, but it works :^).
 
 3. Finally, we can make use of #ALL
-```
+```asm
 JS#ALL("TANKS", #LOWPSI)
 ALL_LOW = _JS
 ```
@@ -71,19 +68,19 @@ The code is also (in my opinion) much clearer.
 ## What's in here?
 
 - ### WAITFOR
-  ```
+  ```asm
   JS#WAITFOR(#PREDICATE)
   ```
   Waits until #PREDICATE evaluates to true.
 
 - ### ALL
-  ```
+  ```asm
   #ALL("array", #PREDICATE)
   ```
   Checks if #PREDICATE returns true for all elements in the array
 
 - ### FOREACH
-  ```
+  ```asm
   #FOREACH("array", #CALLBACK)
   ```
   Applies the #CALLBACK function to each element in the array. 
