@@ -55,6 +55,12 @@ The code is also (in my opinion) much clearer.
 
 ## What's in here?
 
+- ### FOREACH
+  ```asm
+  #FOREACH("array", #CALLBACK)
+  ```
+  Applies the #CALLBACK function to each element in the array. 
+
 - ### WAITFOR
   ```asm
   JS#WAITFOR(#PREDICATE)
@@ -66,10 +72,22 @@ The code is also (in my opinion) much clearer.
   #ALL("array", #PREDICATE)
   ```
   Checks if #PREDICATE returns true for all elements in the array
-
-- ### FOREACH
+  
+- ### ANY
   ```asm
-  #FOREACH("array", #CALLBACK)
+  #ANY("array", #PREDICATE)
   ```
-  Applies the #CALLBACK function to each element in the array. 
+  Checks if any elements in array satisfy #PREDICATE
+
+- ### NONE
+  ```asm
+  #NONE("array", #PREDICATE)
+  ```
+  Checks if none of the elements in array satisfy #PREDICATE
+  
+- ### FIRST
+  ```asm
+  #FIRST("array", #PREDICATE)
+  ```
+  Returns the index of the first element in array which satisfies #PREDICATE, or -1 if none do.
   
