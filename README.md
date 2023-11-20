@@ -44,7 +44,7 @@ EN,,(AN_ACT[^a]<1)
 ```
 This predicate takes a number corresponding to the analog and returns if the actual psi reading is below 1 psi.
 
-To access the first argument passed to a function in DMC, you use ^a. If there were a second paramter you would use ^b, and so on.
+To access the first argument passed to a function in DMC, you use ^a. If there were a second parameter you would use ^b, and so on.
 
 To return a value from a function in DMC, you have to specify the value as part of the EN command after two ','s like this:
 
@@ -62,6 +62,10 @@ ALL_LOW = _JS
 ```
 
 Now ALL_LOW will tell us if all the tanks are low psi or not.
+
+You could easily add more tanks to your check by adding another element to TANKS[], or you could change your PSI threshold by changing the #LOWPSI predicate.
+
+The code is also (in my opinion) much clearer.
 
 ## What's in here?
 
