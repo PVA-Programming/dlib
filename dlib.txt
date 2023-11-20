@@ -1,3 +1,4 @@
+
 REM Wait until a predicate evaluates to true
 REM 
 REM ^a - A predicate function. #WAITFOR will wait until
@@ -8,8 +9,8 @@ REM      This predicate must return 1 or 0 - true or false
    JP#WAITFOR,(_JS=0)
 EN
 
-
-REM Returns true if all items in array satisfy the predicate
+REM ============================================================================
+REM Returns 1 if all items in array satisfy the predicate, otherwise 0
 REM
 REM ^a - An array where each item will be tested
 REM 
@@ -27,7 +28,55 @@ EN,,_JS
    JP#ALLLP,(^c<^a[-1])
 EN,,1
 
+REM ============================================================================
+REM Returns 1 if any items in array satisfy the predicate, otherwise 0
+REM
+REM ^a - An array where each item will be tested
+REM 
+REM ^b - A predicate function.
+REM      Each element of the array will be passed to this predicate
+REM      Like this: JS#PRDCTE(element)
+REM      This predicate must return 1 or 0 - true or false
+#ANY
+   JS#FIRST(^a,^b)   
+EN,,(_JS<>-1)
 
+
+REM ============================================================================
+REM Returns the index of the first item in the array which satisfies the predicate.
+REM Returns -1 if none of them do.
+REM
+REM ^a - An array where each item will be tested
+REM 
+REM ^b - A predicate function.
+REM      Each element of the array will be passed to this predicate
+REM      Like this: JS#PRDCTE(element)
+REM      This predicate must return 1 or 0 - true or false
+#FIRST
+   JS#FIRSTLP(^a,^b,0)
+EN,,_JS
+#FIRSTLP
+   JS ^b(^a[^c])
+   IF(_JS=1);EN,,^c;ENDIF
+   ^c=^c+1
+   JP#FIRSTLP,(^c<^a[-1])
+EN,,-1
+
+REM ============================================================================
+REM Returns 1 if none elements in the array satisfy the predicate, otherwise 0.
+REM
+REM ^a - An array where each item will be tested
+REM 
+REM ^b - A predicate function.
+REM      Each element of the array will be passed to this predicate
+REM      Like this: JS#PRDCTE(element)
+REM      This predicate must return 1 or 0 - true or false
+#NONE
+   JS#ANY(^a,^b)
+EN,,(_JS<>1)
+
+
+REM ============================================================================
 REM Calls a subroutine for each element in an array
 REM
 REM ^a - The name of the array to iterate over
