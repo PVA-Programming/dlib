@@ -91,7 +91,7 @@ REM    - The name of the array passed in must be less than 6 characters
 REM    - The label passed in must be a subroutine the ends with an EN command
 REM
 REM Example:
-REM    JS#4EACH("MSGS", #PRINT)
+REM    JS#FOREACH("MSGS", #PRINT)
 REM
 #FOREACH
    JS#4EACHLP(^a,^b,0)
