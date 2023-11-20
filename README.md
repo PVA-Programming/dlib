@@ -25,7 +25,7 @@ Like this:
 JS#ALL("array",#Predicate)
 ```
 It will loop over all the elements of the array and pass them to your predicate function. 
-If any of these calls to the predicate return 0 (false), #ALL will return 0. If all of the calls to the predicate return 1 (true), #ALL will return 1 (true).
+If any of these calls to the predicate return 0 (false), #ALL will return 0. If all of the calls to the predicate return 1 (true), #ALL will return 1.
 
 1. First we create an array of tanks to iterate over:
 ```
