@@ -1,8 +1,6 @@
 # dlib
 Awesome library of useful DMC algorithms created by the world's most handsome programmer
 
-This is a library of *potentially* useful DMC algorithms.
-
 ## Why would I care?
 These functions implement basic things you'll often want to do like:
  - iterating over all elements of an array and doing something to each one
@@ -67,12 +65,21 @@ Now ALL_LOW will tell us if all the tanks are low psi or not.
 
 ## What's in here?
 
-- ### #WAITFOR(#PREDICATE)
+- ### WAITFOR
+  ```
+  JS#WAITFOR(#PREDICATE)
+  ```
   Waits until #PREDICATE evaluates to true.
 
-- ### #ALL("array", #PREDIATE)
+- ### ALL
+  ```
+  #ALL("array", #PREDIATE)
+  ```
   Checks if #PREDICATE returns true for all elements in the array
 
-- ### #FOREACH("array", #CALLBACK)
+- ### FOREACH
+  ```
+  #FOREACH("array", #CALLBACK)
+  ```
   Applies the #CALLBACK function to each element in the array. 
   
